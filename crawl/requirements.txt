@@ -1,2 +1,5 @@
 Scrapy
 neo4j
+fire
+colorlog
+requests
