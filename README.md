@@ -17,15 +17,15 @@ This project is trying to solve the following problems:
   - Install docker-compose <br>
   `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`                 
 - ###Local dev env :              
-    - #####Back End: 
+    - #####Back End (In progress): 
         - github archive crawler: crawls [gharchive](https://www.gharchive.org/)[gharchive) and feeds graph database.<br>
         in \crawl folder `python crawler.py  start --spider=gharchive`
         - repos description and readme crawler:<br>
         in \crawl folder `python crawler.py  start --spider=repos`  
-    - #####Database:<br>
-        - neo4j deployement: in /backend folder `docker-compose up -d`
+    - #####Database (Ready):<br>
+        - neo4j deployement: in /backend folder `docker-compose up -d neo4j`
         - Nodes (Repos,Actor) Relationships Contribution
-    - #####Front End:<br> 
+    - #####Front End(Not started):<br> 
         -  deploy backend `docker-compose up -d datacrawler #deploy back end and crawl data` <br>
         - run the js app locally `cd UI && npm run serve`
     
@@ -41,6 +41,8 @@ Main use case is to search repos and contributors by topic.
 
 - ### NLU and topic modeling.
 Finding projects/issues/contributors that would best match a certain topic/subject.
+- Learn the right distance metric between repos. (From description, README.md)
+- Learn the right distance metric between Actors(contributors) according to their contributions.
  
  ### Contributors welcome.
 [contribution guidelines ](https://github.com/qodash-devops/icollaborate/blob/master/CONTRIBUTING.md)
