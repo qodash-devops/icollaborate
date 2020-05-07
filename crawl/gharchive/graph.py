@@ -1,6 +1,6 @@
 import neomodel as neo
-
-neo.config.DATABASE_URL = 'bolt://neo4j:gitcontrib@localhost:7687'
+import os
+neo.config.DATABASE_URL = os.environ.get('NEO4J_URL','bolt://neo4j:gitcontrib@localhost:7687')
 
 ###############################################################
 # Data model
