@@ -3,3 +3,4 @@ neo4j
 fire
 colorlog
 requests
+neomodel

@@ -1,28 +1,19 @@
-# -*- coding: utf-8 -*-
+import os
 
-# Scrapy settings for github project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+BOT_NAME = 'gharchive'
 
-BOT_NAME = 'github'
-
-SPIDER_MODULES = ['github.spiders']
-NEWSPIDER_MODULE = 'github.spiders'
+SPIDER_MODULES = ['gharchive.spiders']
+NEWSPIDER_MODULE = 'gharchive.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'github (+http://www.yourdomain.com)'
+#USER_AGENT = 'gharchive (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 1
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -36,7 +27,7 @@ ROBOTSTXT_OBEY = True
 #COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
+TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
 #DEFAULT_REQUEST_HEADERS = {
@@ -47,13 +38,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'github.middlewares.GithubSpiderMiddleware': 543,
+#    'gharchive.middlewares.GharchiveSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'github.middlewares.GithubDownloaderMiddleware': 543,
+#    'gharchive.middlewares.GharchiveDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +56,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'github.pipelines.GithubPipeline': 300,
+#    'gharchive.pipelines.GharchivePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -88,3 +79,9 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+#Perdiod in days from wich to crawl back github events
+GHARCHIVEPERIOD=os.environ.get('GHARCHIVEPERIOD','10D')
+
+#Graph database see /backend/docker-compose.yml
+DATABASE_URL = 'bolt://neo4j:icollaborate@localhost:7687'

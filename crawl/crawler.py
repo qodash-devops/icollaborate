@@ -15,21 +15,22 @@ logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 class CrawlerGo:
-    def search(self,description,loglevel="INFO"):
+    def start(self,period='10D',spider='ghevent',loglevel="INFO"):
         '''
-        :param description:  string
-        :param loglevel: INFO | DEBUG | WARNING | ERROR
+
+        :param period: crawling period for events
+        :param spider: spider name
+        :param loglevel: INFO , DEBUG ...
         :return:
         '''
         settings = Settings()
-        os.environ['SCRAPY_SETTINGS_MODULE'] = 'edgar.settings'
-        settings_module_path = os.environ['SCRAPY_SETTINGS_MODULE']
+        settings_module_path = 'gharchive.settings'
         settings.setmodule(settings_module_path, priority='project')
         settings = get_project_settings()
-
         settings.set("LOG_LEVEL", loglevel)
+        settings.set("GHARCHIVEPERIOD",period)
         process = CrawlerProcess(settings)
-        process.crawl("github")
+        process.crawl(spider)
         process.start()
 
 

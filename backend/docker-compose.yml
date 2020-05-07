@@ -8,13 +8,14 @@ services:
       - 7474:7474
       - 7687:7687
     volumes:
-      - ./conf:/conf
-      - ./data:/data
-      - ./import:/import
-      - ./logs:/logs
-      - ./plugins:/plugins
+      - /tmp/ic_neo4j/conf:/conf
+      - /var/ic_neo4j/data:/data
+      - /var/ic_neo4j/import:/import
+      - /var/ic_neo4j/logs:/logs
+      - /var/ic_neo4j/plugins:/plugins
     environment:
       # Raise memory limits
       - NEO4J_dbms_memory_pagecache_size=1G
       - NEO4J_dbms.memory.heap.initial_size=1G
       - NEO4J_dbms_memory_heap_max__size=1G
+      - NEO4J_AUTH=none #Switch to enable auth
