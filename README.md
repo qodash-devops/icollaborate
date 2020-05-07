@@ -18,7 +18,7 @@ This project is trying to solve the following problems:
   `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`                 
 * ### Local dev env :              
     - Back End: 
-        - github archive crawler: crawls [gharchive](https://www.gharchive.org/)[gharchive) and feeds graph database.<br>
+        - github archive crawler: crawls [gharchive](https://www.gharchive.org/) and feeds graph database.<br>
         in \crawl folder `python crawler.py  start --spider=gharchive`
         - repos description and readme crawler:<br>
         in \crawl folder `python crawler.py  start --spider=repos`  
