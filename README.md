@@ -20,6 +20,7 @@ Main use case is to search repos and contributors by topic.
 Finding projects/issues/contributors that would best match a certain topic/subject.
  
 ### Contributors welcome.
+[contribution guidelines ](https://github.com/qodash-devops/icollaborate/blob/master/CONTRIBUTING.md)
 - This is just the beginning of something great!
 - If you like the mission and can contribute in any form (code/issues/doc) please reach out.   
  
