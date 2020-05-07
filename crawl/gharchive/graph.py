@@ -2,7 +2,9 @@ import neomodel as neo
 
 neo.config.DATABASE_URL = 'bolt://neo4j:gitcontrib@localhost:7687'
 
-
+###############################################################
+# Data model
+######################################
 class Contribution(neo.StructuredRel):
 	time = neo.DateTimeProperty()
 	contribtype = neo.StringProperty()
@@ -21,9 +23,26 @@ class Actor(neo.StructuredNode):
 	contributed = neo.RelationshipTo('Repo','CONTRIBUTED',model=Contribution)
 
 
+##################################################
+# static queries
+#####################################
+def get_repo_urls():
+	query="""
+	MATCH (repo:Repo) RETURN repo.url
+	"""
+	results, meta = neo.db.cypher_query(query)
+	return list(set(sum(results, [])))
+def get_repo_url_missing_readme():
+	query = """
+		MATCH (repo:Repo)
+		WHERE NOT EXISTS(repo.readme)
+		RETURN repo.url
+		"""
+	results, meta = neo.db.cypher_query(query)
+	return list(set(sum(results, [])))
+
+
+
+
 if __name__ == '__main__':
-	A=Actor(id=1,login='test')
-	A.save()
-	R=Repo(name='testr',url='url')
-	R.save()
-	pass
+	get_repo_url_missing_readme()

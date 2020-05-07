@@ -8,7 +8,6 @@ class GharchiveEventPipeline:
         repo.name=item['data']['repo']['name']
         repo.url=item['data']['repo']['url']
         repo.save()
-
         actor=Actor()
         actor.git_id=item['data']['actor']['id']
         actor.login=item['data']['actor']['login']
@@ -21,12 +20,9 @@ class GharchiveEventPipeline:
             if len(item['data']['payload']['commits'])>0:
                 contrib.comment=item['data']['payload']['commits'][0]['message']
         contrib.save()
-
-
-
-
-
-
         return item
 
-
+class RepoPipeline:
+    def process_item(self, item, spider):
+        assert spider.name=='repos'
+        return item
