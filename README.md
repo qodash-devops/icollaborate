@@ -11,21 +11,21 @@ This project is trying to solve the following problems:
 - Follow users that have similar interests.
 
 ## Getting started:
-- ###Prerequisit:
+* ### Prerequisit:
   - recommended dev env: Linux with node and Python3.7.
   - Install Docker. [get docker](https://docs.docker.com/get-docker/)
   - Install docker-compose <br>
   `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`                 
-- ###Local dev env :              
-    - #####Back End (In progress): 
+* ### Local dev env :              
+    - Back End: 
         - github archive crawler: crawls [gharchive](https://www.gharchive.org/)[gharchive) and feeds graph database.<br>
         in \crawl folder `python crawler.py  start --spider=gharchive`
         - repos description and readme crawler:<br>
         in \crawl folder `python crawler.py  start --spider=repos`  
-    - #####Database (Ready):<br>
+    - Database:<br>
         - neo4j deployement: in /backend folder `docker-compose up -d neo4j`
         - Nodes (Repos,Actor) Relationships Contribution
-    - #####Front End(Not started):<br> 
+    - Front End:<br> 
         -  deploy backend `docker-compose up -d datacrawler #deploy back end and crawl data` <br>
         - run the js app locally `cd UI && npm run serve`
     
